@@ -10,6 +10,8 @@ import UIKit
 
 class TodoListController: UITableViewController {
     
+    
+    
     var itemArray = [Item]()
     
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
@@ -33,17 +35,15 @@ class TodoListController: UITableViewController {
         
         loadItems()
         
-
-        
         //tableView.separatorStyle = .none
-        
-        
     }
 
+    
+    
+    
+    
+    
     //MARK - Tableview Datasource Methods
-    
-    
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -63,7 +63,6 @@ class TodoListController: UITableViewController {
         
         //Ternary operator ==>
         //value = condition ? valueIfTrue : valueIfFalse
-        
         cell.accessoryType = item.done ? .checkmark : .none
         
 //        if item.done == true {
@@ -74,8 +73,12 @@ class TodoListController: UITableViewController {
 //        }
         
         return cell
-        
     }
+    
+    
+    
+    
+    
     
     //MARK - Tableview Delegate Methods
     
@@ -86,9 +89,13 @@ class TodoListController: UITableViewController {
         
         saveItems()
         
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
+    
+    
+    
     
     //Mark - Add New Items
     
@@ -106,7 +113,6 @@ class TodoListController: UITableViewController {
             self.itemArray.append(newItem)
             
             self.saveItems()
-            
         }
         
         alert.addTextField { (alertTextField) in
@@ -118,11 +124,12 @@ class TodoListController: UITableViewController {
         alert.addAction(action)
         
         self.present(alert, animated: true, completion: nil)
-        
-        
-        
     }
-        
+    
+    
+    
+    
+    
     
     //MARK - Model Manipulation Methods
     
@@ -135,13 +142,14 @@ class TodoListController: UITableViewController {
         } catch {
             
             print("Error encoding item array, \(error)")
-            
         }
         
-        
         self.tableView.reloadData()
-        
     }
+    
+    
+    
+    
     
     func loadItems() {
         
@@ -158,6 +166,10 @@ class TodoListController: UITableViewController {
         }
         
     }
+    
+    
+    
+    
     
 
 }
